@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0b1426">
+    <title>Akilli Ev Kontrol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="dashboard">
+            <header class="hero">
+                <h1>AKILLI EV KONTROL</h1>
+                <div class="connection-banner" id="connection-banner">
+                    ESP32 BAGLANTISI BEKLENIYOR
+                </div>
+            </header>
+
+            <section class="stack">
+                <article class="panel panel--amber panel--wide" data-card="gas">
+                    <p class="panel__label">GAZ SIZINTI DUZEYI</p>
+                    <h2 id="gas-value">-- <span>PPM</span></h2>
+                    <p class="panel__status">TAHLIYE FANI: <strong id="fan-status">KAPALI</strong></p>
+                </article>
+
+                <article class="panel panel--amber panel--wide" data-card="sound">
+                    <p class="panel__label">ORTAM SES SEVIYESI</p>
+                    <h2 id="sound-value">-- <span>dB</span></h2>
+                    <p class="panel__status">GURULTU DURUMU: <strong id="sound-status">SESSIZ</strong></p>
+                </article>
+
+                <article class="panel panel--red panel--wide" data-card="flame">
+                    <p class="panel__label">YANGIN GUVENLIK (ALEV)</p>
+                    <h2 class="status-line danger" id="flame-status">DURUM: BEKLENIYOR</h2>
+                </article>
+
+                <article class="panel panel--green panel--wide" data-card="water">
+                    <p class="panel__label">SU DEPOSU DOLULUK</p>
+                    <h2 id="water-value">% --</h2>
+                    <p class="panel__status">POMPA: <strong id="pump-status">DURDU</strong></p>
+                </article>
+
+                <div class="mini-grid">
+                    <article class="panel panel--cyan" data-card="temperature">
+                        <p class="panel__label">SICAKLIK</p>
+                        <h2 id="temp-value">--<span>C</span></h2>
+                    </article>
+
+                    <article class="panel panel--cyan" data-card="humidity">
+                        <p class="panel__label">NEM</p>
+                        <h2 id="humidity-value">% --</h2>
+                    </article>
+
+                    <article class="panel panel--amber" data-card="light">
+                        <p class="panel__label">GUN ISIGI</p>
+                        <h2 id="light-value">% --</h2>
+                    </article>
+
+                    <article class="panel panel--cyan" data-card="strip">
+                        <p class="panel__label">SERIT LED</p>
+                        <h2 class="status-line" id="strip-status">KAPALI</h2>
+                    </article>
+                </div>
+
+                <div class="mini-grid">
+                    <article class="panel panel--cyan" data-card="door">
+                        <p class="panel__label">KAPI SENSORU</p>
+                        <h2 class="status-line" id="door-status">KAPALI</h2>
+                    </article>
+
+                    <article class="panel panel--cyan" data-card="motion">
+                        <p class="panel__label">HAREKET</p>
+                        <h2 class="status-line" id="motion-status">YOK</h2>
+                    </article>
+
+                    <article class="panel panel--cyan" data-card="buzzer">
+                        <p class="panel__label">BUZZER</p>
+                        <h2 class="status-line" id="buzzer-status">KAPALI</h2>
+                    </article>
+
+                    <article class="panel panel--cyan" data-card="warning-led">
+                        <p class="panel__label">UYARI LED</p>
+                        <h2 class="status-line" id="warning-led-status">NORMAL</h2>
+                    </article>
+                </div>
+
+                <article class="panel panel--cyan panel--wide" data-card="system">
+                    <p class="panel__label">SISTEM GENEL DURUM</p>
+                    <h2 class="status-line ok" id="system-status">SISTEM CALISIYOR</h2>
+                </article>
+
+                <article class="panel panel--lcd panel--wide" data-card="lcd">
+                    <div class="panel__header">
+                        <p class="panel__label">LCD 20x4 EKRAN</p>
+                        <span class="lcd-chip" id="last-sync">Son guncelleme: --</span>
+                    </div>
+                    <div class="lcd-screen" id="lcd-screen">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="control-dock">
+                <section class="control-bar">
+                    <button id="refresh-button" type="button">VERILERI YENILE</button>
+                </section>
+
+                <section class="quick-controls">
+                    <button type="button" class="quick-button" data-device="stripLed">SERIT LED</button>
+                    <button type="button" class="quick-button" data-device="buzzer">BUZZER</button>
+                    <button type="button" class="quick-button" data-device="warningLed">UYARI LED</button>
+                    <button type="button" class="quick-button" data-device="pump">POMPA</button>
+                </section>
+            </section>
+        </section>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>
